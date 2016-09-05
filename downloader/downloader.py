@@ -116,9 +116,9 @@ def DownloadFiles(flags):
         else:
             url = DOWNLOAD_URL % (FOLDER_ID, name)
 
-      print 'Downloading %s...' % name
-      urllib.urlretrieve(url, path)
-      actual_md5_checksum = Md5File(path)
+    print 'Downloading %s...' % name
+    urllib.urlretrieve(url, path)
+    actual_md5_checksum = Md5File(path)
 
     # If the checksum still didn't match the download must have failed.
     if actual_md5_checksum != md5_checksum:
