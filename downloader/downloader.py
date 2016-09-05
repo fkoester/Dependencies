@@ -55,7 +55,7 @@ FILES = [
     ('libsoup-2.48.0.tar.xz', '51ccb76f5262945e1f0316fdc46de567'),
     ('libspotify-12.1.45-Darwin-universal.zip', '255ae97cb6a108575c66f6fad37a5990'),
     ('libspotify-12.1.45-win32-release.zip', '27651f4d0139c8683dd047a25095fc5e'),
-    ('libtasn1-3.4.tar.gz', '21ec021c534b0f30b2834ce233c70f15'),
+    ('libtasn1-3.9.tar.gz', '7a3e6ab44b5a4918cceea7b58b5c7a9c'),
     ('libtunepimp-0.5.3.tar.gz', '09649f983acef679a548344ba7a9bb2f'),
     ('libusb-1.0.8.tar.bz2', '37d34e6eaa69a4b645a19ff4ca63ceef'),
     ('libusb-win32-bin-1.2.0.0.zip', 'd8e940655e8c43235de9cf979c041bad'),
@@ -111,7 +111,10 @@ def DownloadFiles(flags):
 
     # Download it if the file doesn't exist or if the checksum doesn't match.
     if actual_md5_checksum != md5_checksum:
-      url = DOWNLOAD_URL % (FOLDER_ID, name)
+        if name == 'libtasn1-3.9.tar.gz':
+            url = 'http://ftp.gnu.org/gnu/libtasn1/libtasn1-3.9.tar.gz'
+        else
+            url = DOWNLOAD_URL % (FOLDER_ID, name)
 
       print 'Downloading %s...' % name
       urllib.urlretrieve(url, path)
