@@ -113,7 +113,7 @@ def DownloadFiles(flags):
     if actual_md5_checksum != md5_checksum:
         if name == 'libtasn1-3.9.tar.gz':
             url = 'http://ftp.gnu.org/gnu/libtasn1/libtasn1-3.9.tar.gz'
-        else
+        else:
             url = DOWNLOAD_URL % (FOLDER_ID, name)
 
       print 'Downloading %s...' % name
