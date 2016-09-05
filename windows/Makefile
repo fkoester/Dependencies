@@ -141,7 +141,8 @@ pkgconfig=PKG_CONFIG_LIBDIR=$(prefix)/lib/pkgconfig
 autoconf=ACLOCAL_PATH=$(prefix)/share/aclocal:/usr/share/aclocal
 ldflags=-L$(prefix)/lib
 # -O2 is required to work around link errors in gettext
-cflags=-I$(prefix)/include -O2
+# -msse is required to fix building of lame
+cflags=-I$(prefix)/include -O2 -msse
 cxxflags=$(cflags)
 configure=$(pkgconfig) LDFLAGS=$(ldflags) CFLAGS="$(cflags)" CXXFLAGS="$(cxxflags)" ./configure --host=$(host) --build=$(build) --prefix=$(prefix)
 cmake=$(pkgconfig) cmake .. -DCMAKE_TOOLCHAIN_FILE=$(src)/Toolchain-mingw32.cmake -DCMAKE_INSTALL_PREFIX=$(prefix) -DCMAKE_C_FLAGS="$(cflags)" -DCMAKE_CXX_FLAGS="$(cxxflags)"
